@@ -69,6 +69,17 @@ namespace MotorSolutionNet.Data
             return table?.Rows.Count > 0 ? _userMapping.MapToEntity<User>(table.Rows[0]) : null;
         }
 
+        public User GetUserById(int? userId)
+        {
+            var parameterObject = new
+            {
+                UserId = userId
+            };
+            var parameters = _userMapping.ToSqlParameters(parameterObject);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetUserById, parameters);
+            return table?.Rows.Count > 0 ? _userMapping.MapToEntity<User>(table.Rows[0]) : null;
+        }
+
         public List<Object> GetUserByCompany(int companyCode)
         {   
             var parameterObject = new
@@ -85,7 +96,7 @@ namespace MotorSolutionNet.Data
             }
             return new List<Object>();
         }
-
+      
 
         // Eliminar un usuario
         public bool DeleteUser(int userId)

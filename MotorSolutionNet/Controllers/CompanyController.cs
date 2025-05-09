@@ -11,18 +11,21 @@ namespace MotorSolutionNet.Controllers
     public class CompanyController : ApiController
     {
         private readonly CompanyData _companyData;
+        private readonly PaginationHelper _companyPagination;
         public CompanyController() {
             _companyData = new CompanyData(); 
+            _companyPagination = new PaginationHelper();
         }
 
         [HttpGet]
         [Route("api/company")]
-        public IHttpActionResult GetCompaniesList()
+        public IHttpActionResult GetCompaniesList(int pageIndex, int pageSize)
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
                 var companies = _companyData.ListCompanies();
-                return Ok(companies);
+                var result = _companyPagination.Paginate(companies, pageIndex, pageSize);
+                return Ok(result);
             }, "Ocurrió un error al obtener las compañias.");   
         }
 
@@ -30,8 +33,12 @@ namespace MotorSolutionNet.Controllers
         [Route("api/company")]
         public IHttpActionResult AddCompany([FromBody] Company company)
         {
-            return ControllerHelper.ExecuteAction(this, () =>
+             return ControllerHelper.ExecuteAction(this, () =>
             {
+                var companyVal = _companyData.GetCompanyVal(companyEmail: company.CompanyEmail, nit: company.Nit);
+                if (companyVal != null)
+                    return BadRequest("Esta compañia ya existe.");
+
                 bool ok = _companyData.AddCompany(company);
                 return ok ? Content(HttpStatusCode.OK, "Compañia agregada") : Content(HttpStatusCode.Conflict, "Ocurrió un error al agregar la compañia.");
 

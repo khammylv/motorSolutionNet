@@ -82,7 +82,7 @@ namespace MotorSolutionNet.Data
             DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetClientValidation, parameters);
             return table?.Rows.Count > 0 ? _clientMapping.MapToEntity<Client>(table.Rows[0]) : null;
         }
-        public object GetClientByCompany(int companyCode)
+        public List<Object> GetClientByCompany(int companyCode)
         {
             var parameterObject = new
             {

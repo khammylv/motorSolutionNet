@@ -15,12 +15,14 @@ namespace MotorSolutionNet.Controllers
     public class ClientController : ApiController
     {
         private readonly ClientData _clientData;
+        private readonly PaginationHelper _clientPagination;
         public ClientController()
         {
             _clientData = new ClientData();
+            _clientPagination = new PaginationHelper();
         }
         // GET: api/client
-        [HttpGet]
+       /* [HttpGet]
         [Route("api/client")]
         public IHttpActionResult GetClientList()
         {
@@ -31,7 +33,7 @@ namespace MotorSolutionNet.Controllers
                 return Ok(clients);
             }, "Ocurrió un error al obtener los clientes.");
 
-}
+        }*/
         // POST: api/client
         [HttpPost]
         [Route("api/client")]
@@ -89,12 +91,13 @@ namespace MotorSolutionNet.Controllers
         }
         [HttpGet]
         [Route("api/client/company/{id}")]
-        public IHttpActionResult GetClientCompany(int id)
+        public IHttpActionResult GetClientCompany(int id, int pageIndex, int pageSize)
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
                 var client = _clientData.GetClientByCompany(id);
-                return Ok(client);
+                var result = _clientPagination.Paginate(client, pageIndex, pageSize);
+                return Ok(result);
             }, "Ocurrió un error al obtener los usuarios.");
 
         }

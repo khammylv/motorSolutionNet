@@ -13,10 +13,12 @@ namespace MotorSolutionNet.Controllers
     public class VehicleController : ApiController
     {
         private readonly VehicleData _vehicleData;
+        private readonly PaginationHelper _vehiclePagination;
 
         public VehicleController()
         {
             _vehicleData = new VehicleData();
+            _vehiclePagination = new PaginationHelper();
         }
 
         [HttpPost]
@@ -61,24 +63,26 @@ namespace MotorSolutionNet.Controllers
 
         [HttpGet]
         [Route("api/vehicle/company/{id}")]
-        public IHttpActionResult GetVehicleCompany(int id)
+        public IHttpActionResult GetVehicleCompany(int id, int pageIndex, int pageSize)
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
                 var vehicles = _vehicleData.GetVehiclesByCompany(id);
-                return Ok(vehicles);
+                var result = _vehiclePagination.Paginate(vehicles, pageIndex, pageSize);
+                return Ok(result);
             }, "Ocurrió un error al obtener los vehiculos.");
 
         }
 
         [HttpGet]
         [Route("api/vehicle/client/{id}")]
-        public IHttpActionResult GetVehicleClient(int id)
+        public IHttpActionResult GetVehicleClient(int id, int pageIndex, int pageSize)
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
                 var vehicles = _vehicleData.GetVehiclesByClient(id);
-                return Ok(vehicles);
+                var result = _vehiclePagination.Paginate(vehicles, pageIndex, pageSize);
+                return Ok(result);
             }, "Ocurrió un error al obtener los vehiculos.");
 
         }

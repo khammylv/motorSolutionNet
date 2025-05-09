@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|d:\\proyectos sena\\proyectos\\motorsolutionnet\\motorsolutionnet\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|solutionrelative:motorsolutionnet\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|d:\\proyectos sena\\proyectos\\motorsolutionnet\\motorsolutionnet\\controllers\\userauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|solutionrelative:motorsolutionnet\\controllers\\userauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|d:\\proyectos sena\\proyectos\\motorsolutionnet\\motorsolutionnet\\services\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|solutionrelative:motorsolutionnet\\services\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 100,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserAuthController.cs",
+              "DocumentMoniker": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Controllers\\UserAuthController.cs",
+              "RelativeDocumentMoniker": "MotorSolutionNet\\Controllers\\UserAuthController.cs",
+              "ToolTip": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Controllers\\UserAuthController.cs",
+              "RelativeToolTip": "MotorSolutionNet\\Controllers\\UserAuthController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAgwE4AAAB2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T22:36:10.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IJwtService.cs",
+              "DocumentMoniker": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Services\\IJwtService.cs",
+              "RelativeDocumentMoniker": "MotorSolutionNet\\Services\\IJwtService.cs",
+              "ToolTip": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Services\\IJwtService.cs",
+              "RelativeToolTip": "MotorSolutionNet\\Services\\IJwtService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T22:26:02.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Services\\JwtService.cs",
+              "RelativeDocumentMoniker": "MotorSolutionNet\\Services\\JwtService.cs",
+              "ToolTip": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Services\\JwtService.cs",
+              "RelativeToolTip": "MotorSolutionNet\\Services\\JwtService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwB4AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T22:25:40.917Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

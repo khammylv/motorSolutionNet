@@ -24,13 +24,36 @@ namespace MotorSolutionNet.Services
         }
 
         // Función para generar el token
-        public string GenerateToken(int userId, string name, string rol)
+        public string GenerateTokenUser(int userId, string name, string rol, int companyCode)
         {
             var claims = new[]
             {
-            new Claim("id", userId.ToString()), // Agregar el ID del usuario
+            new Claim("id", userId.ToString()),
+            new Claim("name", name),
+            new Claim("rol", rol), 
+            new Claim("companyCode", companyCode.ToString())
+        };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: _issuer,
+                audience: _audience,
+                claims: claims,
+                expires: DateTime.Now.AddHours(3), // Expiración del token (3 horas)
+                signingCredentials: credentials
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+        public string GenerateTokenCompany(int companyCode, string name)
+        {
+            var claims = new[]
+            {
+            new Claim("id", companyCode.ToString()), // Agregar el ID del usuario
             new Claim("name", name), // Agregar el nombre
-            new Claim("rol", rol), // Agregar el rol
+           // Agregar el rol
         };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));

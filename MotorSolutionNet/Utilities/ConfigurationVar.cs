@@ -12,16 +12,18 @@ namespace MotorSolutionNet.Utilities
         public static string AddUser = "usp_AddUser";
         public static string ListUser = "CALL usp_getAllUsers()";
         public static string GetUser = "usp_getUser";
+        public static string GetUserById = "usp_getUserById";
         public static string UpdateUser = "usp_updateUser";
         public static string DeleteUser = "usp_deleteUser";
         public static string UserEnumRole = "CALL usp_getRole()";
         public static string GetUsersByCompany = "usp_GetUsersWithCompanyByCompanyCode";
 
-        public static string AddCompany = "usp_AddCompany ";
+        public static string AddCompany = "usp_AddCompany";
         public static string ListCompany = "CALL usp_GetAllCompanies()";
-        public static string GetCompany = "usp_GetCompanyByCode";
-        public static string DeleteCompany = "usp_DeleteCompany ";
-        public static string UpdateCompany = "usp_UpdateCompany ";
+        public static string GetCompany = "usp_Getcompany";
+        public static string GetCompanByID = "usp_GetCompanyByCode";
+        public static string DeleteCompany = "usp_DeleteCompany";
+        public static string UpdateCompany = "usp_UpdateCompany";
 
 
         public static string AddClient = "usp_AddClient";

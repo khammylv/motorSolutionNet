@@ -8,7 +8,8 @@ namespace MotorSolutionNet.Services
 {
     public interface IJwtService
     {
-        string GenerateToken(int userId, string name, string role);
+        string GenerateTokenUser(int userId, string name, string role, int companyCode);
+        string GenerateTokenCompany(int companyCode, string name);
         ClaimsPrincipal ValidateToken(string token);
     }
 }

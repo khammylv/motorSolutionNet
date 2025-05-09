@@ -40,7 +40,7 @@ namespace MotorSolutionNet.Services
                     }
                     catch
                     {
-                        // Si el tipo no es directamente convertible (por ejemplo, nullable), intenta asignar sin conversión
+                        
                         prop.SetValue(entity, row[columnName]);
                     }
                 }

@@ -14,16 +14,18 @@ namespace MotorSolutionNet.Controllers
     public class UserController : ApiController
     {
         private readonly UserData _userData;
-       
+        private readonly PaginationHelper _userPagination;
+
 
         public UserController()
         {
-            _userData = new UserData(); 
-          
+            _userData = new UserData();
+            _userPagination = new PaginationHelper();
+
         }
 
         
-        [HttpGet]
+       /* [HttpGet]
         [Route("api/user")]
         public IHttpActionResult GetUserList()
         {
@@ -32,7 +34,7 @@ namespace MotorSolutionNet.Controllers
                 var users = _userData.ListUsers();
                 return Ok(users);
             }, "Ocurrió un error al obtener los usuarios.");
-        }
+        }*/
 
         // POST: api/user   
         [HttpPost]
@@ -90,7 +92,7 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var user = _userData.GetUser(userId: id);
+                var user = _userData.GetUserById(userId: id);
                 if (user == null)
                    return NotFound();
                 
@@ -98,18 +100,19 @@ namespace MotorSolutionNet.Controllers
             }, "❌ Error al encontrar usuario.");
         }
 
+ 
         [HttpGet]
         [Route("api/user/company/{id}")]
-        public IHttpActionResult GetUserCompanyCode(int id)
+        public IHttpActionResult GetUserCompanyCode(int id, int pageIndex, int pageSize)
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
                 var users = _userData.GetUserByCompany(companyCode: id);
-                return Ok(users);
+                var result = _userPagination.Paginate(users, pageIndex, pageSize);
+                return Ok(result);
             }, "Ocurrió un error al obtener los usuarios.");
-    
-        }
 
+        }
 
         [HttpGet]
         [Route("api/user/role")]
