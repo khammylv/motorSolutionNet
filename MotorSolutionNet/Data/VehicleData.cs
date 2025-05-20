@@ -115,14 +115,6 @@ namespace MotorSolutionNet.Data
             return new List<Object>();
         }
 
-        public bool UpdateDepartureDate(int vehicleId)
-        {
-            var parameterObject = new
-            {
-                VehicleId = vehicleId,
-            };
-            var parameters = _vehicleMapping.ToSqlParameters(parameterObject);
-            return _connection.ExecuteProcedure(ConfigurationVar.UpdateDepaureDate, parameters);
-        }
+       
     }
 }

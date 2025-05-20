@@ -49,16 +49,6 @@ namespace MotorSolutionNet.Controllers
 
         }
 
-        [HttpPatch]
-        [Route("api/vehicle/{id}")]
-        public IHttpActionResult UpdateDepartureDate(int id)
-        {
-            return ControllerHelper.ExecuteAction(this, () =>
-            {
-                bool ok = _vehicleData.UpdateDepartureDate(id);
-                return ok ? Content(HttpStatusCode.OK, "✅ Fecha del vehiculo actualizada") : Content(HttpStatusCode.Conflict, "❌ Error al actualizar la fecha de salida del vehiculo");
-            }, "❌ Error al actualizar la fecha de salida del vehiculo.");
-        }
 
 
         [HttpGet]

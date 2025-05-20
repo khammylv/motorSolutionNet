@@ -42,7 +42,31 @@ namespace MotorSolutionNet.Utilities
         public static string DeleteVehicle = "usp_DeleteVehicle";
         public static string GetVehicleByClient = "usp_GetVehicleWithCompanyByClient";
         public static string GetVehicleByCompany = "usp_GetVehicleWithCompanyByCompanyCode";
+        
+
+
+        public static string AddBilling = "usp_AddBilling";
+        public static string ListBilling = "CALL usp_GetAllBillings()";
+        public static string GetBillingByID = "usp_GetBillingById";
+        public static string GetFullBillingByID = "GetFullBillingById";
+        public static string UpdateBilling = "usp_UpdateBilling";
+        public static string DeleteBilling = "usp_DeleteBilling";
+        public static string GetBillingsByCompany = "GetFullBillingByCompany";
+        public static string GetBillingsByClient = "GetFullBillingByClient";
+
+        public static string AddRepair = "usp_AddRepair";
+        public static string UpdateRepair = "usp_updateRepair";
+        public static string ListRepair = "CALL usp_GetAllRepairs()";
+        public static string GetRepairById = "usp_getRepairById";
+        public static string DeleteRepair = "usp_DeleteRepair";
+        public static string GetRepairByCompany = "usp_GetRepairByCompany";
+        public static string GetRepairByClient = "usp_getRepairByClient";
+        public static string GetRepairByVehicle = "usp_GetRepairsByVehicle";
         public static string UpdateDepaureDate = "usp_UpdateDepartureDate";
 
+
     }
+
+    
+        
 }

@@ -180,23 +180,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BillingController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\RepairsController.cs" />
     <Compile Include="Controllers\TestApiController.cs" />
     <Compile Include="Controllers\UserAuthController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
+    <Compile Include="Data\BillingData.cs" />
     <Compile Include="Data\ClientData.cs" />
     <Compile Include="Data\CompanyData.cs" />
     <Compile Include="Data\ConectionDB.cs" />
+    <Compile Include="Data\RepairData.cs" />
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Data\VehicleData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Billings.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Paginator.cs" />
+    <Compile Include="Models\Repairs.cs" />
     <Compile Include="Models\RoleOptionsResult.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vehicle.cs" />
