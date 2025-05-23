@@ -192,6 +192,7 @@
     <Compile Include="Data\ClientData.cs" />
     <Compile Include="Data\CompanyData.cs" />
     <Compile Include="Data\ConectionDB.cs" />
+    <Compile Include="Data\EmailSendData.cs" />
     <Compile Include="Data\RepairData.cs" />
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Data\VehicleData.cs" />
@@ -201,6 +202,7 @@
     <Compile Include="Models\Billings.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\EmailSend.cs" />
     <Compile Include="Models\Paginator.cs" />
     <Compile Include="Models\Repairs.cs" />
     <Compile Include="Models\RoleOptionsResult.cs" />
@@ -217,6 +219,8 @@
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include=".env" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

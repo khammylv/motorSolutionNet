@@ -16,5 +16,7 @@ namespace MotorSolutionNet.Models
         public string LegalRepresentative { get; set; } = string.Empty;
         
         public string CompanyPassword { get; set; } = string.Empty;
+        
+        public string PasswordEmail { get; set; } = string.Empty;
     }
 }

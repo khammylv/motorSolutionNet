@@ -39,7 +39,9 @@ namespace MotorSolutionNet.Data
         {
             var parameters = _companyMapping.ToSqlParameters(company);
             string hashedPassword = _userService.HashPassword(company.CompanyPassword);
+            string hashedPasswordEmail = _userService.HashPassword(company.PassportEmail);
             parameters["@p_CompanyPassword"] = hashedPassword;
+            parameters["@p_PassportEmail"] = hashedPasswordEmail;
             return _connection.ExecuteProcedure(ConfigurationVar.AddCompany, parameters);
         }
         public bool UpdateCompany(Company company) {

@@ -1,0 +1,41 @@
+﻿# Archivos de entorno
+.env
+
+# Archivos de configuración locales
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de compilación
+bin/
+obj/
+[Bb]uild/
+[Bb]uilds/
+
+# Archivos generados por paquetes
+packages/
+*.nupkg
+*.snupkg
+
+# Archivos de Visual Studio
+.vs/
+.vscode/
+*.csproj.user
+
+# Logs
+*.log
+
+# Archivos de publicación
+.publish/
+*.Publish.xml
+
+# Archivos temporales
+*.tmp
+*.temp
+*.bak
+*.old
+
+# Archivos de base de datos local
+*.mdf
+*.ldf

@@ -24,6 +24,8 @@ namespace MotorSolutionNet.Utilities
         public static string GetCompanByID = "usp_GetCompanyByCode";
         public static string DeleteCompany = "usp_DeleteCompany";
         public static string UpdateCompany = "usp_UpdateCompany";
+        public static string UpdatePassword = "usp_UpdatePassword";
+        public static string UpdateEmailPassword = "usp_UpdateEmailPassword";
 
 
         public static string AddClient = "usp_AddClient";
