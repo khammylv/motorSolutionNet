@@ -14,25 +14,25 @@ namespace MotorSolutionNet.Data
     public class ConectionDB
     {
 
-        private readonly string connectionString = ConfigurationVar.ConectionDB;
+        private readonly string connectionString = ConfigManager.GetConfigValue("DATABASE_URL");
 
-        public MySqlConnection GetConnection()
+        public SqlConnection GetConnection()
         {
-            return new MySqlConnection(connectionString);
+            return new SqlConnection(connectionString);
         }
 
         public bool ExecuteSentence(string sql, bool returnData)
         {
             try
             {
-                using (MySqlConnection connection = GetConnection())
+                using (SqlConnection connection = GetConnection())
                 {
                     connection.Open();
-                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         if (returnData)
                         {
-                            using (MySqlDataReader reader = command.ExecuteReader())
+                            using (SqlDataReader reader = command.ExecuteReader())
                             {
                                 return reader.HasRows;
                             }
@@ -56,16 +56,16 @@ namespace MotorSolutionNet.Data
         {
             try
             {
-                using (MySqlConnection connection = GetConnection())
+                using (SqlConnection connection = GetConnection())
                 {
                     connection.Open();
-                    using (MySqlCommand command = new MySqlCommand(procedureName, connection))
+                    using (SqlCommand command = new SqlCommand(procedureName, connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
                         foreach (var param in parameters)
                         {
-                            command.Parameters.AddWithValue(param.Key, param.Value);
+                            command.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
                         }
 
                         int rowsAffected = command.ExecuteNonQuery();
@@ -78,18 +78,19 @@ namespace MotorSolutionNet.Data
                 Console.WriteLine("Error in ExecuteProcedure: " + ex.Message);
                 return false;
             }
+
         }
 
         public DataTable ExecuteQuery(string sql)
         {
             try
             {
-                using (MySqlConnection connection = GetConnection())
+                using (SqlConnection connection = GetConnection())
                 {
                     connection.Open();
-                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
                             DataTable table = new DataTable();
                             adapter.Fill(table);
@@ -109,9 +110,9 @@ namespace MotorSolutionNet.Data
         {
             try
             {
-                using (MySqlConnection connection = GetConnection())
+                using (SqlConnection connection = GetConnection())
                 {
-                    using (MySqlCommand command = new MySqlCommand(procedureName, connection))
+                    using (SqlCommand command = new SqlCommand(procedureName, connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -120,7 +121,7 @@ namespace MotorSolutionNet.Data
                             command.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
                         }
 
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
                             DataTable table = new DataTable();
                             adapter.Fill(table);

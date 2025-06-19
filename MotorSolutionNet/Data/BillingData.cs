@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using MotorSolutionNet.DTO;
 using MotorSolutionNet.Models;
 using MotorSolutionNet.Services;
 using MotorSolutionNet.Utilities;
@@ -20,10 +21,10 @@ namespace MotorSolutionNet.Data
             _billingMapping = new Mapping();
         }
 
-        public bool AddBilling(Billings billing)
+        public bool AddBilling(BillingDTO billing)
         {
             var parameters = _billingMapping.ToSqlParameters(billing);
-            return _connection.ExecuteProcedure(ConfigurationVar.AddBilling, parameters);
+            return _connection.ExecuteProcedure(ConfigurationVarBilling.AddBilling, parameters);
         }
 
         public bool UpdateBilling(Billings billing)
@@ -52,15 +53,24 @@ namespace MotorSolutionNet.Data
             return table?.Rows.Count > 0 ? _billingMapping.MapToEntity<Billings>(table.Rows[0]) : null;
         }
 
-      
-        public Billings GetFullBilling(int billingId)
+        public Billings GetBillingByRepairId(int repairId)
+        {
+            var parameterObject = new
+            {
+                RepairId = repairId,
+            };
+            var parameters = _billingMapping.ToSqlParameters(parameterObject);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarBilling.GetBillingByRepairId, parameters);
+            return table?.Rows.Count > 0 ? _billingMapping.MapToEntity<Billings>(table.Rows[0]) : null;
+        }
+        public Object GetFullBilling(int billingId)
         {
             var parameterObject = new
             {
                 BillingId = billingId,
             };
             var parameters = _billingMapping.ToSqlParameters(parameterObject);
-            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetFullBillingByID, parameters);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarBilling.GetFullBillingByID, parameters);
             return table?.Rows.Count > 0 ? _billingMapping.GenericMapping(table.Rows[0]) : null;
         }
 
@@ -71,7 +81,7 @@ namespace MotorSolutionNet.Data
                 CompanyCode = companyCode,
             };
             var parameters = _billingMapping.ToSqlParameters(parameterObject);
-            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetBillingsByCompany, parameters);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarBilling.GetBillingsByCompany, parameters);
             if (table?.Rows.Count > 0)
             {
                 return table.AsEnumerable()
@@ -87,7 +97,7 @@ namespace MotorSolutionNet.Data
                 ClientId = clientId,
             };
             var parameters = _billingMapping.ToSqlParameters(parameterObject);
-            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetBillingsByClient, parameters);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarBilling.GetBillingsByClient, parameters);
             if (table?.Rows.Count > 0)
             {
                 return table.AsEnumerable()

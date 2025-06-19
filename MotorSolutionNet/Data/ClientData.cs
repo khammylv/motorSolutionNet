@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using MotorSolutionNet.DTO;
 using MotorSolutionNet.Models;
 using MotorSolutionNet.Services;
 using MotorSolutionNet.Utilities;
@@ -24,7 +25,7 @@ namespace MotorSolutionNet.Data
 
         public List<Client> ListClients()
         {
-            DataTable table = _connection.ExecuteQuery(ConfigurationVar.ListClient);
+            DataTable table = _connection.ExecuteQuery(ConfigurationVarClient.ListClient);
             if (table?.Rows.Count > 0)
             {
                 return table.AsEnumerable()
@@ -39,14 +40,14 @@ namespace MotorSolutionNet.Data
         public bool AddClient(Client client)
         { 
             var parameters = _clientMapping.ToSqlParameters(client);
-            return _connection.ExecuteProcedure(ConfigurationVar.AddClient, parameters);
+            return _connection.ExecuteProcedure(ConfigurationVarClient.AddClient, parameters);
         }
 
  
-        public bool UpdateClient(Client client)
+        public bool UpdateClient(ClientDTO client)
         {
             var parameters = _clientMapping.ToSqlParameters(client);
-            return _connection.ExecuteProcedure(ConfigurationVar.UpdateClient, parameters);
+            return _connection.ExecuteProcedure(ConfigurationVarClient.UpdateClient, parameters);
         }
         public bool DeleteClient(int clientId)
         {
@@ -55,7 +56,7 @@ namespace MotorSolutionNet.Data
                 ClientId = clientId,
             };
             var parameters = _clientMapping.ToSqlParameters(parameterObject);
-            return _connection.ExecuteProcedure(ConfigurationVar.DeleteClient, parameters);
+            return _connection.ExecuteProcedure(ConfigurationVarClient.DeleteClient, parameters);
         }
         public Client GetClient(int clientId)
         {
@@ -65,7 +66,7 @@ namespace MotorSolutionNet.Data
               
             };
             var parameters = _clientMapping.ToSqlParameters(parameterObject);
-            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetClient, parameters);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarClient.GetClient, parameters);
           
             return table?.Rows.Count > 0 ? _clientMapping.MapToEntity<Client>(table.Rows[0]): null;
         }
@@ -79,7 +80,7 @@ namespace MotorSolutionNet.Data
                 CompanyCode = companyCode
             };
             var parameters = _clientMapping.ToSqlParameters(parameterObject);
-            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetClientValidation, parameters);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarClient.GetClientValidation, parameters);
             return table?.Rows.Count > 0 ? _clientMapping.MapToEntity<Client>(table.Rows[0]) : null;
         }
         public List<Object> GetClientByCompany(int companyCode)
@@ -89,7 +90,7 @@ namespace MotorSolutionNet.Data
                 CompanyCode = companyCode
             };
             var parameters = _clientMapping.ToSqlParameters(parameterObject);
-            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetClientByCompany, parameters);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarClient.GetClientByCompany, parameters);
             if (table?.Rows.Count > 0)
             {
                 return table.AsEnumerable()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using MotorSolutionNet.DTO;
 using MotorSolutionNet.Models;
 using MotorSolutionNet.Services;
 using MotorSolutionNet.Utilities;
@@ -14,17 +15,17 @@ namespace MotorSolutionNet.Data
     {
         private readonly ConectionDB _connection;
         private readonly Mapping _companyMapping;
-        private readonly UserService _userService;
+        private readonly AuthService _userService;
 
         public CompanyData()
         {
             _connection = new ConectionDB();
             _companyMapping = new Mapping();
-            _userService = new UserService();
+            _userService = new AuthService();
         }
         public List<Company> ListCompanies()
         {
-            var table = _connection.ExecuteQuery(ConfigurationVar.ListCompany);
+            var table = _connection.ExecuteQuery(ConfigurationVarCompany.ListCompany);
 
             if (table?.Rows.Count > 0)
             {
@@ -39,24 +40,24 @@ namespace MotorSolutionNet.Data
         {
             var parameters = _companyMapping.ToSqlParameters(company);
             string hashedPassword = _userService.HashPassword(company.CompanyPassword);
-            string hashedPasswordEmail = _userService.HashPassword(company.PassportEmail);
+            string hashedPasswordEmail = EncryptionHelper.Encrypt(company.PasswordEmail);
             parameters["@p_CompanyPassword"] = hashedPassword;
-            parameters["@p_PassportEmail"] = hashedPasswordEmail;
-            return _connection.ExecuteProcedure(ConfigurationVar.AddCompany, parameters);
+            parameters["@p_PasswordEmail"] = hashedPasswordEmail;
+            return _connection.ExecuteProcedure(ConfigurationVarCompany.AddCompany, parameters);
         }
-        public bool UpdateCompany(Company company) {
+        public bool UpdateCompany(CompanyDTO company) {
             var parameters = _companyMapping.ToSqlParameters(company);
-            return _connection.ExecuteProcedure(ConfigurationVar.UpdateCompany, parameters);
+             return _connection.ExecuteProcedure(ConfigurationVarCompany.UpdateCompany, parameters);
         }
-        public Company GetCompany(int? companyCode = null) {
+        public CompanyDTO GetCompany(int? companyCode = null) {
             var parameterObject = new
             {
                 CompanyCode = companyCode
             };
             var parameters = _companyMapping.ToSqlParameters(parameterObject);
-            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetCompanByID, parameters);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarCompany.GetCompanByID, parameters);
 
-            return table?.Rows.Count > 0 ? _companyMapping.MapToEntity<Company>(table.Rows[0]) : null;
+            return table?.Rows.Count > 0 ? _companyMapping.MapToEntity<CompanyDTO>(table.Rows[0]) : null;
         }
         public Company GetCompanyVal(int? companyCode = null, string companyEmail = null, string nit = null)
         {
@@ -67,7 +68,7 @@ namespace MotorSolutionNet.Data
                 Nit = nit
             };
             var parameters = _companyMapping.ToSqlParameters(parameterObject);
-            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetCompany, parameters);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarCompany.GetCompany, parameters);
 
             return table?.Rows.Count > 0 ? _companyMapping.MapToEntity<Company>(table.Rows[0]) : null;
         }
@@ -78,7 +79,7 @@ namespace MotorSolutionNet.Data
                 CompanyCode = companyCode
             };
             var parameters = _companyMapping.ToSqlParameters(parameterObject);
-            return _connection.ExecuteProcedure(ConfigurationVar.DeleteCompany, parameters);
+            return _connection.ExecuteProcedure(ConfigurationVarCompany.DeleteCompany, parameters);
         }
 
     }

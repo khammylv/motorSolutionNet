@@ -28,6 +28,7 @@ namespace MotorSolutionNet.Services
                     error = ex.Message
                 };
                 var response = controller.Request.CreateResponse(HttpStatusCode.InternalServerError, error);
+                //System.Diagnostics.Debug.WriteLine("error: " + error);
                 return new ResponseMessageResult(response);
             }
         }

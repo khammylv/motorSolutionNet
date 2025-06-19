@@ -56,11 +56,14 @@ namespace MotorSolutionNet.Services
 
             foreach (var property in typeof(T).GetProperties())
             {
-                var paramName = $"@p_{property.Name}"; 
+                var paramName = $"@p_{property.Name}";
+                //System.Diagnostics.Debug.WriteLine("Param: " + paramName);
                 parameters.Add(paramName, property.GetValue(entity));
             }
 
             return parameters;
         }
+     
+
     }
 }

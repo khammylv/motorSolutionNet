@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using MotorSolutionNet.Data;
+using MotorSolutionNet.DTO;
 using MotorSolutionNet.Models;
 using MotorSolutionNet.Services;
 
@@ -12,13 +13,13 @@ namespace MotorSolutionNet.Controllers
 {
     public class VehicleController : ApiController
     {
-        private readonly VehicleData _vehicleData;
+        private readonly VehicleService _vehicleService;
         private readonly PaginationHelper _vehiclePagination;
 
         public VehicleController()
         {
-            _vehicleData = new VehicleData();
-            _vehiclePagination = new PaginationHelper();
+            _vehicleService = new VehicleService();
+            
         }
 
         [HttpPost]
@@ -27,10 +28,10 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var vehicleVal = _vehicleData.GetVehicleValidation(plate: vehicle.Plate, companyCode: vehicle.CompanyCode);
+                var vehicleVal = _vehicleService.GetVehicleValidation(plate: vehicle.Plate, companyCode: vehicle.CompanyCode);
                 if (vehicleVal != null)
                     return BadRequest("Vehiculo Existente.");
-                bool ok = _vehicleData.AddVehicle(vehicle);
+                bool ok = _vehicleService.AddVehicle(vehicle);
                 return ok ? Content(HttpStatusCode.OK, "✅ Vehiculo agregado") : Content(HttpStatusCode.Conflict, "❌ Error al agregar vehiculo");
 
             }, "❌ Error al agregar vehiculo");
@@ -38,11 +39,11 @@ namespace MotorSolutionNet.Controllers
 
         [HttpPut]
         [Route("api/vehicle")]
-        public IHttpActionResult UpdateVehicle([FromBody] Vehicle vehicle)
+        public IHttpActionResult UpdateVehicle([FromBody] VehicleDTO vehicle)
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                bool ok = _vehicleData.UpdateVehicle(vehicle);
+                bool ok = _vehicleService.UpdateVehicle(vehicle);
                 return ok ? Content(HttpStatusCode.OK, "✅ Vehiculo actualizado") : Content(HttpStatusCode.Conflict, "❌ Error al actualizar vehiculo.");
 
             }, "❌ Error al actualizar vehiculo.");
@@ -57,9 +58,9 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var vehicles = _vehicleData.GetVehiclesByCompany(id);
-                var result = _vehiclePagination.Paginate(vehicles, pageIndex, pageSize);
-                return Ok(result);
+                var vehicles = _vehicleService.GetVehiclesByCompany(id, pageIndex, pageSize);
+                
+                return Ok(vehicles);
             }, "Ocurrió un error al obtener los vehiculos.");
 
         }
@@ -70,9 +71,9 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var vehicles = _vehicleData.GetVehiclesByClient(id);
-                var result = _vehiclePagination.Paginate(vehicles, pageIndex, pageSize);
-                return Ok(result);
+                var vehicles = _vehicleService.GetVehiclesByClient(id, pageIndex, pageSize);
+                
+                return Ok(vehicles);
             }, "Ocurrió un error al obtener los vehiculos.");
 
         }
@@ -84,7 +85,7 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var vehicle = _vehicleData.GetVehicle(id);
+                var vehicle = _vehicleService.GetVehicle(id);
                 if (vehicle == null)
                     return NotFound();
 
@@ -99,7 +100,7 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                bool ok = _vehicleData.DeleteVehicle(id);
+                bool ok = _vehicleService.DeleteVehicle(id);
                 return ok ? Content(HttpStatusCode.OK, "✅ Vehiculo eliminado") : Content(HttpStatusCode.Conflict, "❌ Error al eliminar");
 
             }, "❌ Error al eliminar.");

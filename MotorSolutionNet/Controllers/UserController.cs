@@ -1,40 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net;
 using System.Web.Http;
-using MotorSolutionNet.Data;
+using MotorSolutionNet.DTO;
 using MotorSolutionNet.Models;
 using MotorSolutionNet.Services;
-using Mysqlx;
+
 
 namespace MotorSolutionNet.Controllers
 {
     public class UserController : ApiController
     {
-        private readonly UserData _userData;
-        private readonly PaginationHelper _userPagination;
-
+        private readonly UserService _userService;
+        
 
         public UserController()
         {
-            _userData = new UserData();
-            _userPagination = new PaginationHelper();
+            _userService = new UserService();
+           
 
         }
 
-        
-       /* [HttpGet]
-        [Route("api/user")]
-        public IHttpActionResult GetUserList()
-        {
-            return ControllerHelper.ExecuteAction(this, () =>
-            {
-                var users = _userData.ListUsers();
-                return Ok(users);
-            }, "Ocurrió un error al obtener los usuarios.");
-        }*/
+      
 
         // POST: api/user   
         [HttpPost]
@@ -43,11 +28,11 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var userVal = _userData.GetUser(userEmail: user.UserEmail, userIdentification: user.UserIdentification);
+                var userVal = _userService.GetUser(userEmail: user.UserEmail, userIdentification: user.UserIdentification);
                 if (userVal != null)
 
                     return BadRequest("Este usuario ya existe.");
-                bool ok = _userData.AddUser(user);
+                bool ok = _userService.AddUser(user);
                 return ok ? Content(HttpStatusCode.OK, "✅ Usuario agregado") : Content(HttpStatusCode.Conflict, "❌ Error al agregar usuario");
             }, "❌ Error al agregar usuario.");
 
@@ -57,11 +42,11 @@ namespace MotorSolutionNet.Controllers
    
         [HttpPut]
         [Route("api/user")]
-        public IHttpActionResult PutUser( [FromBody] User user)
+        public IHttpActionResult PutUser( [FromBody] UserDTO user)
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                bool resultado = _userData.UpdateUser(user);
+                bool resultado = _userService.UpdateUser(user);
                 return resultado ? Content(HttpStatusCode.OK, "Usuario actualizado") : Content(HttpStatusCode.Conflict, "❌ Error al actualizar");
 
             }, "❌ Error al actualizar.");
@@ -77,7 +62,7 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                bool resultado = _userData.DeleteUser(id);
+                bool resultado = _userService.DeleteUser(id);
                 return resultado ? Content(HttpStatusCode.OK, "Usuario eliminado") : Content(HttpStatusCode.Conflict, "❌ Error al eliminar");
             
             }, "❌ Error al eliminar.");
@@ -92,10 +77,10 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var user = _userData.GetUserById(userId: id);
+                var user = _userService.GetUserById(userId: id);
                 if (user == null)
-                   return NotFound();
-                
+                    return Content(HttpStatusCode.NotFound, $"⚠️ El usuario con ID {id} no existe.");
+
                 return Ok(user);
             }, "❌ Error al encontrar usuario.");
         }
@@ -107,8 +92,8 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var users = _userData.GetUserByCompany(companyCode: id);
-                var result = _userPagination.Paginate(users, pageIndex, pageSize);
+                
+                var result = _userService.GetUserByCompany(companyCode: id, pageIndex, pageSize);
                 return Ok(result);
             }, "Ocurrió un error al obtener los usuarios.");
 
@@ -120,7 +105,7 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var roles = _userData.GetRoleOptions();
+                var roles = _userService.GetRoleOptions();
                 return Ok(roles);
             }, "Ocurrió un error al obtener los roles de usuario.");
         }

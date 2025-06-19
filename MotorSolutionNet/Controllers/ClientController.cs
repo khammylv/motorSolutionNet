@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using MotorSolutionNet.Data;
+using MotorSolutionNet.DTO;
 using MotorSolutionNet.Models;
 using MotorSolutionNet.Services;
 using Client = MotorSolutionNet.Models.Client;
@@ -14,12 +15,12 @@ namespace MotorSolutionNet.Controllers
 {
     public class ClientController : ApiController
     {
-        private readonly ClientData _clientData;
-        private readonly PaginationHelper _clientPagination;
+        private readonly ClientServices _clientService;
+        
         public ClientController()
         {
-            _clientData = new ClientData();
-            _clientPagination = new PaginationHelper();
+            _clientService = new ClientServices();
+            
         }
         // GET: api/client
        /* [HttpGet]
@@ -41,22 +42,22 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var clientVal = _clientData.GetClientValidation(email: client.Email, identification: client.Identification, companyCode: client.CompanyCode);
+                var clientVal = _clientService.GetClientValidation(email: client.Email, identification: client.Identification, companyCode: client.CompanyCode);
+                System.Diagnostics.Debug.WriteLine("Client: " + clientVal);
                 if (clientVal != null)
-
-                    return BadRequest("Cliente Existente.");
-                bool ok = _clientData.AddClient(client);
+                  return BadRequest("Cliente Existente.");
+                bool ok = _clientService.AddClient(client);
                 return ok ? Content(HttpStatusCode.OK, "✅ Cliente agregado") : Content(HttpStatusCode.Conflict, "❌ Error al agregar cliente");
             }, "❌ Error al agregar cliente");
         }
      
         [HttpPut]
         [Route("api/client")]
-        public IHttpActionResult UpdateClientControl([FromBody] Client client)
+        public IHttpActionResult UpdateClientControl([FromBody] ClientDTO client)
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                bool ok = _clientData.UpdateClient(client);
+                bool ok = _clientService.UpdateClient(client);
                 return ok ? Content(HttpStatusCode.OK, "✅ Cliente actualizado") : Content(HttpStatusCode.Conflict, "❌ Error al actualizar cliente.");
 
             }, "❌ Error al actualizar cliente.");
@@ -69,7 +70,7 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                bool ok = _clientData.DeleteClient(id);
+                bool ok = _clientService.DeleteClient(id);
                 return ok ? Content(HttpStatusCode.OK, "✅ Cliente eliminado") : Content(HttpStatusCode.Conflict, "❌ Error al eliminar");
 
             }, "❌ Error al eliminar.");
@@ -81,7 +82,7 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var client = _clientData.GetClient(id);
+                var client = _clientService.GetClient(id);
                 if (client == null)
                     return NotFound();
 
@@ -95,9 +96,9 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var client = _clientData.GetClientByCompany(id);
-                var result = _clientPagination.Paginate(client, pageIndex, pageSize);
-                return Ok(result);
+                var client = _clientService.GetClientByCompany(companyCode: id, pageIndex, pageSize);
+               
+                return Ok(client);
             }, "Ocurrió un error al obtener los usuarios.");
 
         }

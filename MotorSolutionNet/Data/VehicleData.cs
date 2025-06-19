@@ -6,6 +6,7 @@ using MotorSolutionNet.Services;
 using MotorSolutionNet.Models;
 using System.Data;
 using MotorSolutionNet.Utilities;
+using MotorSolutionNet.DTO;
 
 namespace MotorSolutionNet.Data
 {
@@ -22,7 +23,7 @@ namespace MotorSolutionNet.Data
 
         public List<Vehicle> ListVehicles()
         {
-            DataTable table = _connection.ExecuteQuery(ConfigurationVar.ListVehicle);
+            DataTable table = _connection.ExecuteQuery(ConfigurationVarVehicle.ListVehicle);
             if (table?.Rows.Count > 0)
             {
                 return table.AsEnumerable()
@@ -42,7 +43,7 @@ namespace MotorSolutionNet.Data
                 CompanyCode = companyCode
             };
             var parameters = _vehicleMapping.ToSqlParameters(parameterObject);
-            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetVehicle, parameters);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarVehicle.GetVehicle, parameters);
             return table?.Rows.Count > 0 ? _vehicleMapping.MapToEntity<Vehicle>(table.Rows[0]) : null;
         }
         public Vehicle GetVehicle(int id_vehicle)
@@ -53,20 +54,20 @@ namespace MotorSolutionNet.Data
 
             };
             var parameters = _vehicleMapping.ToSqlParameters(parameterObject);
-            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetVehicleByID, parameters);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarVehicle.GetVehicleByID, parameters);
 
             return table?.Rows.Count > 0 ? _vehicleMapping.MapToEntity<Vehicle>(table.Rows[0]) : null;
         }
         public bool AddVehicle(Vehicle vehicle)
         {
             var parameters = _vehicleMapping.ToSqlParameters(vehicle);
-            return _connection.ExecuteProcedure(ConfigurationVar.AddVehicle, parameters);
+            return _connection.ExecuteProcedure(ConfigurationVarVehicle.AddVehicle, parameters);
         }
 
-        public bool UpdateVehicle(Vehicle vehicle)
+        public bool UpdateVehicle(VehicleDTO vehicle)
         {
             var parameters = _vehicleMapping.ToSqlParameters(vehicle);
-            return _connection.ExecuteProcedure(ConfigurationVar.UpdateVehicle, parameters);
+            return _connection.ExecuteProcedure(ConfigurationVarVehicle.UpdateVehicle, parameters);
         }
 
         public bool DeleteVehicle(int vehicleId)
@@ -76,7 +77,7 @@ namespace MotorSolutionNet.Data
                 VehicleId = vehicleId,
             };
             var parameters = _vehicleMapping.ToSqlParameters(parameterObject);
-            return _connection.ExecuteProcedure(ConfigurationVar.DeleteVehicle, parameters);
+            return _connection.ExecuteProcedure(ConfigurationVarVehicle.DeleteVehicle, parameters);
         }
 
         public List<Object> GetVehiclesByCompany(int companyCode)
@@ -86,7 +87,7 @@ namespace MotorSolutionNet.Data
                 CompanyCode = companyCode,
             };
             var parameters = _vehicleMapping.ToSqlParameters(parameterObject);
-            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetVehicleByCompany, parameters);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarVehicle.GetVehicleByCompany, parameters);
             if (table?.Rows.Count > 0)
             {
                 return table.AsEnumerable()
@@ -104,7 +105,7 @@ namespace MotorSolutionNet.Data
                 ClientId = clientId,
             };
             var parameters = _vehicleMapping.ToSqlParameters(parameterObject);
-            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVar.GetVehicleByClient, parameters);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarVehicle.GetVehicleByClient, parameters);
             if (table?.Rows.Count > 0)
             {
                 return table.AsEnumerable()

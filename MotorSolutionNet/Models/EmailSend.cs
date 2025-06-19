@@ -7,6 +7,7 @@ namespace MotorSolutionNet.Models
 {
     public class EmailSend
     {
+        public int CompanyCode { get; set; }
         public string CompanyName { get; set; } = string.Empty;
         public string CompanyEmail { get; set; } = string.Empty;
         public string PassportEmail { get; set; } = string.Empty;

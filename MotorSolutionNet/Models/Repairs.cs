@@ -11,7 +11,7 @@ namespace MotorSolutionNet.Models
         public int ClientId { get; set; }
         public string EntryDate { get; set; } = string.Empty;
         public string DepartureDate { get; set; } = string.Empty;
-        public string RepairDescription { get; set; } = string.Empty;
+        public string RepairStatus { get; set; } = string.Empty;
         public int CompanyCode { get; set; }
 
     }

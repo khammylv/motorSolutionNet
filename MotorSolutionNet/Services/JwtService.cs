@@ -7,6 +7,7 @@ using System.Text;
 using System.Web;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
+using MotorSolutionNet.Utilities;
 
 namespace MotorSolutionNet.Services
 {
@@ -18,9 +19,9 @@ namespace MotorSolutionNet.Services
 
         public JwtService()
         {
-            _secretKey = ConfigurationManager.AppSettings["JwtSecretKey"];
-            _issuer = ConfigurationManager.AppSettings["JwtIssuer"];
-            _audience = ConfigurationManager.AppSettings["JwtAudience"];
+            _secretKey = ConfigManager.GetConfigValue("JWT");
+            _issuer = ConfigManager.GetConfigValue("JWT_ISSUER");
+            _audience = ConfigManager.GetConfigValue("JWT_AUDIENCE");
         }
 
         // Función para generar el token

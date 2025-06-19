@@ -18,5 +18,6 @@ namespace MotorSolutionNet.Models
         public string CompanyPassword { get; set; } = string.Empty;
         
         public string PasswordEmail { get; set; } = string.Empty;
+        public string Status { get; set; } = string.Empty;
     }
 }

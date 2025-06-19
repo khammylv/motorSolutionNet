@@ -16,14 +16,14 @@ namespace MotorSolutionNet.Controllers
     {
         private readonly UserData _userData;
         private readonly CompanyData _companyData;
-        private readonly UserService _userService;
+        private readonly AuthService _userService;
         private readonly JwtService _jwtToken;
 
         public UserAuthController()
         {
             _userData = new UserData();
             _companyData = new CompanyData();
-            _userService = new UserService();
+            _userService = new AuthService();
             _jwtToken = new JwtService();
         }
 

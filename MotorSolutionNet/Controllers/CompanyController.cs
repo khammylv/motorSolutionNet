@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using MotorSolutionNet.Data;
+using MotorSolutionNet.DTO;
 using MotorSolutionNet.Models;
 using MotorSolutionNet.Services;
 
@@ -10,48 +11,48 @@ namespace MotorSolutionNet.Controllers
 {
     public class CompanyController : ApiController
     {
-        private readonly CompanyData _companyData;
-        private readonly PaginationHelper _companyPagination;
+        private readonly CompanyService _companyService;
+       
         public CompanyController() {
-            _companyData = new CompanyData(); 
-            _companyPagination = new PaginationHelper();
+            _companyService = new CompanyService(); 
+            
         }
 
-        [HttpGet]
+        /*[HttpGet]
         [Route("api/company")]
         public IHttpActionResult GetCompaniesList(int pageIndex, int pageSize)
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var companies = _companyData.ListCompanies();
+                var companies = _companyService.ListCompanies();
                 var result = _companyPagination.Paginate(companies, pageIndex, pageSize);
                 return Ok(result);
             }, "Ocurrió un error al obtener las compañias.");   
         }
-
+        */
         [HttpPost]
         [Route("api/company")]
         public IHttpActionResult AddCompany([FromBody] Company company)
         {
              return ControllerHelper.ExecuteAction(this, () =>
             {
-                var companyVal = _companyData.GetCompanyVal(companyEmail: company.CompanyEmail, nit: company.Nit);
+                var companyVal = _companyService.GetCompanyVal(companyEmail: company.CompanyEmail, nit: company.Nit);
                 if (companyVal != null)
                     return BadRequest("Esta compañia ya existe.");
 
-                bool ok = _companyData.AddCompany(company);
-                return ok ? Content(HttpStatusCode.OK, "Compañia agregada") : Content(HttpStatusCode.Conflict, "Ocurrió un error al agregar la compañia.");
+                bool ok = _companyService.AddCompany(company);
+                return ok ? Content(HttpStatusCode.OK, "Compañia agregada") : Content(HttpStatusCode.Conflict, "Ocurrió un error al agregar la compañia. AQUI");
 
             }, "Ocurrió un error al agregar la compañia.");
         }
 
         [HttpPut]
         [Route("api/company")]
-        public IHttpActionResult UpdateCompany( [FromBody] Company company)
+        public IHttpActionResult UpdateCompany( [FromBody] CompanyDTO company)
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                bool ok = _companyData.UpdateCompany(company);
+                bool ok = _companyService.UpdateCompany(company);
                 return ok ? Content(HttpStatusCode.OK, "Compañia actualizada") : Content(HttpStatusCode.Conflict, "Ocurrió un error al actualizar la compañia.");
 
             }, "Ocurrió un error al actualizar la compañia.");
@@ -63,7 +64,7 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                bool ok = _companyData.DeleteCompany(id);
+                bool ok = _companyService.DeleteCompany(id);
                 return ok ? Content(HttpStatusCode.OK, "Compañia eliminada") : Content(HttpStatusCode.Conflict, "Ocurrió un error al eliminar la compañia.");
 
             }, "Ocurrió un error al eliminar la compañia.");
@@ -75,7 +76,7 @@ namespace MotorSolutionNet.Controllers
         {
             return ControllerHelper.ExecuteAction(this, () =>
             {
-                var company = _companyData.GetCompany(id);
+                var company = _companyService.GetCompany(id);
                 if (company == null)
                     return NotFound();
 

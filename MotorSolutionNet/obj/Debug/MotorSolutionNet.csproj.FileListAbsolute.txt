@@ -239,3 +239,5 @@ D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\Microsoft.Exte
 D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\Newtonsoft.Json.Bson.pdb
 D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\Newtonsoft.Json.Bson.xml
 D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\System.Web.Http.Cors.xml
+D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\dotenv.net.dll
+D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\.env
