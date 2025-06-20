@@ -31,7 +31,8 @@ namespace MotorSolutionNet.Services
             {
             new Claim("id", userId.ToString()),
             new Claim("name", name),
-            new Claim("rol", rol), 
+            new Claim("rol", rol),
+            new Claim("isEmpresa", "false"),
             new Claim("companyCode", companyCode.ToString())
         };
 
@@ -52,8 +53,10 @@ namespace MotorSolutionNet.Services
         {
             var claims = new[]
             {
-            new Claim("id", companyCode.ToString()), // Agregar el ID del usuario
-            new Claim("name", name), // Agregar el nombre
+            new Claim("companyCode", companyCode.ToString()),
+            new Claim("isEmpresa", "true"),
+            new Claim("rol", "administrador"),
+            new Claim("name", name),
            // Agregar el rol
         };
 
