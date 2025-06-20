@@ -37,7 +37,7 @@ namespace MotorSolutionNet.Services
         {
             return _billingData.GetBillingByRepairId(repairId);
         }
-        public Object GetFullBilling(int billingId)
+        public PdfBilling GetFullBilling(int billingId)
         {
             return _billingData.GetFullBilling(billingId);
         }

@@ -45,7 +45,7 @@ namespace MotorSolutionNet.Utilities
                 }
                 if (prop.PropertyType == typeof(Decimal))
                 {
-                    if ((int)value <= 0)
+                    if ((decimal)value <= 0)
                         return false;
                 }
 

@@ -63,7 +63,7 @@ namespace MotorSolutionNet.Data
             DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarBilling.GetBillingByRepairId, parameters);
             return table?.Rows.Count > 0 ? _billingMapping.MapToEntity<Billings>(table.Rows[0]) : null;
         }
-        public Object GetFullBilling(int billingId)
+        public PdfBilling GetFullBilling(int billingId)
         {
             var parameterObject = new
             {
@@ -71,7 +71,7 @@ namespace MotorSolutionNet.Data
             };
             var parameters = _billingMapping.ToSqlParameters(parameterObject);
             DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarBilling.GetFullBillingByID, parameters);
-            return table?.Rows.Count > 0 ? _billingMapping.GenericMapping(table.Rows[0]) : null;
+            return table?.Rows.Count > 0 ? _billingMapping.MapToEntity<PdfBilling>(table.Rows[0]) : null;
         }
 
         public List<Object> GetBillingsByCompany(int companyCode)

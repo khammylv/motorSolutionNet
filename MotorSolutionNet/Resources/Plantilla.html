@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Title of the document</title>
+    <style>
+        table.border {
+            border-collapse: collapse;
+        }
+
+            table.border th {
+                padding: 5px;
+                border: 1px solid black;
+            }
+
+            table.border td {
+                padding: 5px;
+                border: 1px solid black;
+            }
+
+        .total {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <table style="width:100%">
+        <tr>
+            <td style="width:20%"></td>
+            <td style="width:60%" align="center" valign="top">
+                <table>
+                    <tr><td align="center"><h4 style="margin:0px">@COMPANYNAME</h4></td></tr>
+                    <tr><td align="center">Direccion: @COMPANYADDRES </td></tr>
+                    <tr><td align="center">Telefono: @COMPANYPHONE </td></tr>
+                    <tr><td align="center">Direccion: @COMPANYADDRES </td></tr>
+                    <tr><td align="center">Email: @COMPANYEMAIL </td></tr>
+                </table>
+            </td>
+            <td style="width:20%">
+                <table class="border" style="width:100%">
+                    <tr><td align="center">Nit: @NIT</td></tr>
+                    <tr><td align="center" style="background-color:#D8D8D8">FACTURA</td></tr>
+                    <tr><td align="center">Nro: @BILLINGID</td></tr>
+                    <tr><td align="center">Fecha: @BILLINGDATE</td></tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr><td colspan="3" height="20"></td></tr>
+
+        <tr>
+            <td colspan="2">
+                <table style="width:100%">
+                    <tr>
+                        <td colspan="1" style="width:20%">Cliente:</td>
+                        <td colspan="3" style="width:80%;border-bottom:1px solid black">@CLIENTENAME</td>
+                    </tr>
+                </table>
+                <table style="width:100%">
+                    <tr>
+                        <td style="width:10%">Modelo:</td>
+                        <td style="width:20%;border-bottom:1px solid black">@MODEL</td>
+                        <td style="width:20%">F. entrada:</td>
+                        <td style="width:40%;border-bottom:1px solid black">@ENTRYDATE</td>
+
+                    </tr>
+                </table>
+                <table style="width:100%">
+                    <tr>
+                        <td style="width:10%">Placa:</td>
+                        <td style="width:20%;border-bottom:1px solid black">@PLATE</td>
+                        <td style="width:20%">F. salida:</td>
+                        <td style="width:40%;border-bottom:1px solid black">@DEPARTUREDATE</td>
+
+                    </tr>
+                </table>
+
+            </td>
+            <td></td>
+        </tr>
+
+        <tr><td colspan="3" height="30"></td></tr>
+
+        <tr>
+            <td colspan="3">
+                <table class="border" style="width:100%;">
+                    <thead>
+                        <tr style="background-color:#D8D8D8">
+                            <th>Servicio</th>
+                            <th>Descripcion</th>
+                            <th>Precio</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--<tr>
+                            <td>1</td>
+                            <td>sdafsda</td>
+                            <td>2.4</td>
+                            <td>2.4</td>
+                        </tr>-->
+                        @FILAS
+                        <tr>
+                            <td style="border: 0px !important"></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div class="total">
+        <strong>Total: $@AMOUNT</strong>
+    </div>
+
+    <div class="footer">
+        <p>Gracias por confiar en nosotros. ¡Buen viaje!</p>
+    </div>
+</body>
+</html>

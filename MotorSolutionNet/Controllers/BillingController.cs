@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Http;
+using iTextSharp.text;
 using MotorSolutionNet.Data;
 using MotorSolutionNet.DTO;
 using MotorSolutionNet.Models;
@@ -14,12 +16,12 @@ namespace MotorSolutionNet.Controllers
     public class BillingController : ApiController
     {
         private readonly BillingService _billingService;
-        
+        private readonly PdfServices _pdfServices;
 
         public BillingController()
         {
             _billingService = new BillingService();
-          
+            _pdfServices = new PdfServices();
         }
 
         [HttpPost]
@@ -37,8 +39,6 @@ namespace MotorSolutionNet.Controllers
             }, "❌ Error al agregar factura");
         }
 
-   
-
         [HttpGet]
         [Route("api/billing/{id}")]
         public IHttpActionResult GetBilling(int id)
@@ -51,10 +51,7 @@ namespace MotorSolutionNet.Controllers
 
                 return Ok(repair);
             }, "❌ Error al obtener factura");
-
         }
-
-
 
         [HttpGet]
         [Route("api/billing/full/{id}")]
@@ -68,7 +65,6 @@ namespace MotorSolutionNet.Controllers
 
                 return Ok(repair);
             }, "❌ Error al obtener factura");
-
         }
 
         [HttpGet]
@@ -78,10 +74,9 @@ namespace MotorSolutionNet.Controllers
             return ControllerHelper.ExecuteAction(this, () =>
             {
                 var billing = _billingService.GetBillingsByClient(id, pageIndex, pageSize);
-                
+
                 return Ok(billing);
             }, "Ocurrió un error al obtener las reparaciones.");
-
         }
 
         [HttpGet]
@@ -91,10 +86,31 @@ namespace MotorSolutionNet.Controllers
             return ControllerHelper.ExecuteAction(this, () =>
             {
                 var billing = _billingService.GetBillingsByCompany(id, pageIndex, pageSize);
-               
-                return Ok(billing);
-            }, "Ocurrió un error al obtener las reparaciones.");
 
+                return Ok(billing);
+            }, "Ocurrió un error al obtener las facturas.");
+        }
+        [HttpGet]
+        [Route("api/billing/pdf/{id}")]
+        public IHttpActionResult GetPDF(int id)
+        {
+            return ControllerHelper.ExecuteAction(this, () =>
+            {
+                byte[] pdfBytes = _pdfServices.GenerarPdf(id);
+
+                var result = new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new ByteArrayContent(pdfBytes)
+                };
+
+                result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
+                result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("inline")
+                {
+                    FileName = "factura.pdf"
+                };
+
+                return ResponseMessage(result); // ✅ OK
+            }, "Ocurrió un error al obtener la factura.");
         }
     }
 }

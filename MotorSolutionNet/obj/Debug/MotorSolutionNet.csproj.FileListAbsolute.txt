@@ -241,3 +241,7 @@ D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\Newtonsoft.Jso
 D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\System.Web.Http.Cors.xml
 D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\dotenv.net.dll
 D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\.env
+D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\itextsharp.dll
+D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\itextsharp.xmlworker.dll
+D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\itextsharp.xml
+D:\Proyectos Sena\proyectos\motorSolutionNet\MotorSolutionNet\bin\Resources\Plantilla.html
