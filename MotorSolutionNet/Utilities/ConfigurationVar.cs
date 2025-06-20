@@ -40,6 +40,7 @@ namespace MotorSolutionNet.Utilities
         public static string UpdateCompany = "usp_UpdateCompany";
         public static string UpdatePassword = "usp_UpdatePassword";
         public static string UpdateEmailPassword = "usp_UpdateEmailPassword";
+        public static string SumaryCompany = "usp_ResumenPorEmpresa";
     }
     public class ConfigurationVarClient
     {

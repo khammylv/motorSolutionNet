@@ -85,5 +85,18 @@ namespace MotorSolutionNet.Controllers
 
         }
 
+        [HttpGet]
+        [Route("api/company/sumary/{id}")]
+        public IHttpActionResult GetCompanySumary(int id)
+        {
+            return ControllerHelper.ExecuteAction(this, () =>
+            {
+                var company = _companyService.GetCompanySummary(id);
+
+                return Ok(company);
+            }, "Ocurrió un error al encontrar la compañia.");
+
+        }
+
     }
 }

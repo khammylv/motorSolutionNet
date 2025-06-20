@@ -82,5 +82,30 @@ namespace MotorSolutionNet.Data
             return _connection.ExecuteProcedure(ConfigurationVarCompany.DeleteCompany, parameters);
         }
 
+        public CompanySummaryResult GetCompanySummary(int companyCode)
+        {
+            var parameterObject = new
+            {
+                CompanyCode = companyCode
+            };
+
+            var parameters = _companyMapping.ToSqlParameters(parameterObject);
+            DataTable table = _connection.ExecuteProcedureQuery(ConfigurationVarCompany.SumaryCompany, parameters);
+
+            var result = new CompanySummaryResult();
+
+            if (table?.Rows.Count > 0)
+            {
+                DataRow row = table.Rows[0];
+
+                result.Resumen["total_users"] = row["total_users"] != DBNull.Value ? Convert.ToInt32(row["total_users"]) : 0;
+                result.Resumen["total_clients"] = row["total_clients"] != DBNull.Value ? Convert.ToInt32(row["total_clients"]) : 0;
+                result.Resumen["total_vehicles"] = row["total_vehicles"] != DBNull.Value ? Convert.ToInt32(row["total_vehicles"]) : 0;
+                result.Resumen["total_bills"] = row["total_bills"] != DBNull.Value ? Convert.ToInt32(row["total_bills"]) : 0;
+            }
+
+            return result;
+        }
+
     }
 }

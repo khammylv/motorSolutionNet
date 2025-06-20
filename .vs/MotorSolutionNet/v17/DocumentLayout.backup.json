@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|d:\\proyectos sena\\proyectos\\motorsolutionnet\\motorsolutionnet\\utilities\\configmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|solutionrelative:motorsolutionnet\\utilities\\configmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|d:\\proyectos sena\\proyectos\\motorsolutionnet\\motorsolutionnet\\controllers\\companycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|solutionrelative:motorsolutionnet\\controllers\\companycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|d:\\proyectos sena\\proyectos\\motorsolutionnet\\motorsolutionnet\\services\\repairservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|solutionrelative:motorsolutionnet\\services\\repairservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|d:\\proyectos sena\\proyectos\\motorsolutionnet\\motorsolutionnet\\services\\companyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|solutionrelative:motorsolutionnet\\services\\companyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|d:\\proyectos sena\\proyectos\\motorsolutionnet\\motorsolutionnet\\controllers\\repairscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|solutionrelative:motorsolutionnet\\controllers\\repairscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|d:\\proyectos sena\\proyectos\\motorsolutionnet\\motorsolutionnet\\data\\companydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|solutionrelative:motorsolutionnet\\data\\companydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|d:\\proyectos sena\\proyectos\\motorsolutionnet\\motorsolutionnet\\utilities\\configurationvar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|solutionrelative:motorsolutionnet\\utilities\\configurationvar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|d:\\proyectos sena\\proyectos\\motorsolutionnet\\motorsolutionnet\\models\\companysummaryresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBE7F115-0201-4371-9699-60AF33E64123}|MotorSolutionNet\\MotorSolutionNet.csproj|solutionrelative:motorsolutionnet\\models\\companysummaryresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,49 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ConfigManager.cs",
-              "DocumentMoniker": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Utilities\\ConfigManager.cs",
-              "RelativeDocumentMoniker": "MotorSolutionNet\\Utilities\\ConfigManager.cs",
-              "ToolTip": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Utilities\\ConfigManager.cs",
-              "RelativeToolTip": "MotorSolutionNet\\Utilities\\ConfigManager.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowDMAAAAAAAAAAAAAAA==",
+              "Title": "CompanyController.cs",
+              "DocumentMoniker": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Controllers\\CompanyController.cs",
+              "RelativeDocumentMoniker": "MotorSolutionNet\\Controllers\\CompanyController.cs",
+              "ToolTip": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Controllers\\CompanyController.cs",
+              "RelativeToolTip": "MotorSolutionNet\\Controllers\\CompanyController.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAwwFgAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T15:15:24.351Z",
+              "WhenOpened": "2025-06-20T19:23:20.034Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RepairService.cs",
-              "DocumentMoniker": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Services\\RepairService.cs",
-              "RelativeDocumentMoniker": "MotorSolutionNet\\Services\\RepairService.cs",
-              "ToolTip": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Services\\RepairService.cs",
-              "RelativeToolTip": "MotorSolutionNet\\Services\\RepairService.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAwwCQAAAAAAAAAAAAAAA==",
+              "Title": "CompanyService.cs",
+              "DocumentMoniker": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Services\\CompanyService.cs",
+              "RelativeDocumentMoniker": "MotorSolutionNet\\Services\\CompanyService.cs",
+              "ToolTip": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Services\\CompanyService.cs",
+              "RelativeToolTip": "MotorSolutionNet\\Services\\CompanyService.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAIwDYAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T15:14:10.777Z",
+              "WhenOpened": "2025-06-20T19:22:34.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ConfigurationVar.cs",
+              "DocumentMoniker": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Utilities\\ConfigurationVar.cs",
+              "RelativeDocumentMoniker": "MotorSolutionNet\\Utilities\\ConfigurationVar.cs",
+              "ToolTip": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Utilities\\ConfigurationVar.cs",
+              "RelativeToolTip": "MotorSolutionNet\\Utilities\\ConfigurationVar.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwCoAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T19:20:25.735Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "RepairsController.cs",
-              "DocumentMoniker": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Controllers\\RepairsController.cs",
-              "RelativeDocumentMoniker": "MotorSolutionNet\\Controllers\\RepairsController.cs",
-              "ToolTip": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Controllers\\RepairsController.cs",
-              "RelativeToolTip": "MotorSolutionNet\\Controllers\\RepairsController.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Title": "CompanyData.cs",
+              "DocumentMoniker": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Data\\CompanyData.cs",
+              "RelativeDocumentMoniker": "MotorSolutionNet\\Data\\CompanyData.cs",
+              "ToolTip": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Data\\CompanyData.cs",
+              "RelativeToolTip": "MotorSolutionNet\\Data\\CompanyData.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAwwFQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T15:13:08.051Z",
+              "WhenOpened": "2025-06-20T19:19:46.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CompanySummaryResult.cs",
+              "DocumentMoniker": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Models\\CompanySummaryResult.cs",
+              "RelativeDocumentMoniker": "MotorSolutionNet\\Models\\CompanySummaryResult.cs",
+              "ToolTip": "D:\\Proyectos Sena\\proyectos\\motorSolutionNet\\MotorSolutionNet\\Models\\CompanySummaryResult.cs",
+              "RelativeToolTip": "MotorSolutionNet\\Models\\CompanySummaryResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T19:19:29.146Z",
               "EditorCaption": ""
             }
           ]

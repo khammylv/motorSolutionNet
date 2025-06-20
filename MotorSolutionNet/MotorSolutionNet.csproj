@@ -220,6 +220,7 @@
     <Compile Include="Models\Billings.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\CompanySummaryResult.cs" />
     <Compile Include="Models\EmailSend.cs" />
     <Compile Include="Models\Paginator.cs" />
     <Compile Include="Models\PdfBilling.cs" />

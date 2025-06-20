@@ -50,6 +50,10 @@ namespace MotorSolutionNet.Services
         {
             return _companyData.GetCompany(companyCode);
         }
+        public CompanySummaryResult GetCompanySummary(int companyCode)
+        {
+            return _companyData.GetCompanySummary(companyCode);
+        }
 
     }
 }
