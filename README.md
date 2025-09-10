@@ -12,15 +12,12 @@ Con MotorSolution, los talleres pueden **ofrecer un servicio más ágil, organiz
 ## 2. Resumen del proyecto
 
 En este Pdf se puede observar todos los detalles del proyecto incluyendo los diagramas, test y funcionalidades.
-* [Aquí puedes ver el diagrama](## 2. Diagrama de Flujo
-
-Para este proyecto se desarrollo un diagrama en el cual se puede ver todo el flujo utilizado en la ejecución.
-* [Aquí puedes ver el pdf](https://drive.google.com/file/d/16dIAbwdi5S54dW9x__a-lYMx66sn2kV1/view?usp=sharing)
+* [Aquí puedes ver el pdf](https://drive.google.com/file/d/1UVWrQe-unU7DLbt3wnep1SOZW5g6M2gl/view?usp=drive_link)
 
 ## 3. Modo de uso (API)
 
 En el siguiente link puedes acceder a los **endpoint** de la api.
-* [Aquí puedes acceder a la documentacion]([https://drive.google.com/file/d/16dIAbwdi5S54dW9x__a-lYMx66sn2kV1/view?usp=sharing](http://motorsolution.somee.com/swagger/ui/index#/)
+* [Aquí puedes acceder a la documentacion](http://motorsolution.somee.com/swagger/ui/index#/)
 
 
  ### Desarrollado por: Maria camila leal vasquez.
