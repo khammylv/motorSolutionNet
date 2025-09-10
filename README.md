@@ -17,7 +17,7 @@ En este Pdf se puede observar todos los detalles del proyecto incluyendo los dia
 ## 3. Modo de uso (API)
 
 En el siguiente link puedes acceder a los **endpoint** de la api.
-* [Aquí puedes acceder a la documentacion](http://motorsolution.somee.com/swagger/ui/index#/)
+* [Aquí puedes acceder a la documentacion](http://motorsolution.somee.com/swagger/ui/index)
 
 
  ### Desarrollado por: Maria camila leal vasquez.
